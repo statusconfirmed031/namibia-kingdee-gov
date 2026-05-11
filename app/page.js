@@ -1,5 +1,5 @@
 import styles from './page.module.css'
-import { departments, priorities } from './data'
+import { departments, priorities, aiAgents } from './data'
 
 const tagClass = { coral: styles.tCoral, purple: styles.tPurple, teal: styles.tTeal, amber: styles.tAmber }
 
@@ -10,6 +10,7 @@ export default function Home() {
         <div className={styles.logo}>Kingdee<span> × </span>Namibia</div>
         <nav className={styles.nav}>
           <a href="#context">Context</a>
+          <a href="#agents">AI Agents</a>
           <a href="#departments">Departments</a>
           <a href="#priorities">Priorities</a>
         </nav>
@@ -20,7 +21,7 @@ export default function Home() {
         <h1>What Namibia needs<br /><strong>Kingdee to build</strong></h1>
         <p className={styles.heroDesc}>A department-by-department breakdown of citizen-facing government tasks — translated into plain development requirements and commercial priorities for Kingdee R&D and commercial teams.</p>
         <div className={styles.stats}>
-          {[{n:'11',l:'Departments'},{n:'40+',l:'Citizen tasks'},{n:'4',l:'Module types'},{n:'2.5M',l:'Namibians'}].map(s => (
+          {[{n:'11',l:'Departments'},{n:'40+',l:'Citizen tasks'},{n:'6',l:'AI Agents'},{n:'2.5M',l:'Namibians'}].map(s => (
             <div key={s.l} className={styles.stat}>
               <div className={styles.statN}>{s.n}</div>
               <div className={styles.statL}>{s.l}</div>
@@ -44,6 +45,51 @@ export default function Home() {
               <div className={styles.contextNum}>{c.n}</div>
               <h3>{c.h}</h3>
               <p>{c.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.section} id="agents">
+        <div className={styles.sectionLabel}>AI Agents</div>
+        <h2>The stack explained</h2>
+        <p className={styles.sectionDesc}>AI agents are the automated workers sitting on top of Kingdee ERP and Huawei infrastructure. They do the routine work — 24 hours a day, without a lunch break.</p>
+
+        <div className={styles.stackDiagram}>
+          <div className={styles.stackRow + ' ' + styles.stackTop}>
+            <div className={styles.stackLabel}>AI Agents</div>
+            <div className={styles.stackDesc}>The workers — verify documents, calculate tax, route cases, send notifications, detect fraud, allocate land</div>
+          </div>
+          <div className={styles.stackArrow}>↓ runs on</div>
+          <div className={styles.stackRow + ' ' + styles.stackMid}>
+            <div className={styles.stackLabel}>Kingdee ERP</div>
+            <div className={styles.stackDesc}>The office system — workflows, citizen records, payments, approvals, audit trails</div>
+          </div>
+          <div className={styles.stackArrow}>↓ runs on</div>
+          <div className={styles.stackRow + ' ' + styles.stackBot}>
+            <div className={styles.stackLabel}>Huawei Infrastructure</div>
+            <div className={styles.stackDesc}>The building — servers, cloud, network, security across Namibia</div>
+          </div>
+        </div>
+
+        <div className={styles.agentGrid}>
+          {aiAgents.map(a => (
+            <div key={a.name} className={styles.agentCard}>
+              <div className={styles.agentName}>{a.name}</div>
+              <div className={styles.agentCompare}>
+                <div className={styles.agentCol}>
+                  <div className={styles.agentColLabel + ' ' + styles.agentWithout}>Without agent</div>
+                  <p>{a.without}</p>
+                </div>
+                <div className={styles.agentDivider} />
+                <div className={styles.agentCol}>
+                  <div className={styles.agentColLabel + ' ' + styles.agentWith}>With agent</div>
+                  <p>{a.with}</p>
+                </div>
+              </div>
+              <div className={styles.agentApplies}>
+                {a.applies.map(d => <span key={d} className={styles.agentTag}>{d}</span>)}
+              </div>
             </div>
           ))}
         </div>
