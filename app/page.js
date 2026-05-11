@@ -128,13 +128,20 @@ export default function Home() {
         <div className={styles.sectionLabel}>Commercial strategy</div>
         <h2>Where to start</h2>
         <p className={styles.sectionDesc}>Not all departments have equal urgency. These six have the clearest path to a signed contract and visible public impact.</p>
-        <div className={styles.priorityGrid}>
-          {priorities.map(p => (
-            <div key={p.title} className={styles.pCard + ' ' + styles[p.tier]}>
-              <div className={styles.pTier}>{p.tierLabel}</div>
-              <h3>{p.title}</h3>
-              <p>{p.desc}</p>
-              <div className={styles.pReason}><strong>Why Kingdee wins here</strong>{p.reason}</div>
+        <div className={styles.phasesContainer}>
+          {['p1', 'p2', 'p3'].map((tier, idx) => (
+            <div key={tier} className={styles.phaseGroup}>
+              <h3 className={styles.phaseHeading}>Phase {idx + 1}</h3>
+              <div className={styles.priorityGrid}>
+                {priorities.filter(p => p.tier === tier).map(p => (
+                  <div key={p.title} className={`${styles.pCard} ${styles[p.tier]}`}>
+                    <div className={styles.pTier}>{p.tierLabel}</div>
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
+                    <div className={styles.pReason}><strong>Why Kingdee wins here</strong>{p.reason}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
