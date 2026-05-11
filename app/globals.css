@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -10,6 +8,13 @@
   --amber-bg: #fdf3e3; --amber-fg: #7a4f0a;
   --coral-bg: #fdf0ed; --coral-fg: #9e3520;
 }
+
 html { scroll-behavior: smooth; }
-body { font-family: 'IBM Plex Sans', sans-serif; font-size: 14.5px; line-height: 1.65; color: var(--black); background: var(--bg); }
+
+body {
+  font-family: var(--font-sans), 'IBM Plex Sans', sans-serif;
+  font-size: 14.5px; line-height: 1.65;
+  color: var(--black); background: var(--bg);
+}
+
 a { color: inherit; text-decoration: none; }
