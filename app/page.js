@@ -33,7 +33,7 @@ export default function Home() {
       <div className={`${styles.section} ${styles.contextSection}`} id="context">
         <div className={styles.sectionLabel}>Context</div>
         <h2>Why Kingdee, and why now</h2>
-        <p className={styles.sectionDesc}>Namibia has a Digital First Services for All roadmap running from 2024 to 2026 that calls for digitising its top public services. Kingdee is positioned to deliver the ERP Backbone by deploying in-front (THE API AGENTS) that performs the gov tasks.</p>
+        <p className={styles.sectionDesc}>Namibia has a Digital First Services for All roadmap running from 2024 to 2026 that calls for digitising its top public services. Kingdee is positioned to deliver the ERP Backbone by deploying in-front (Artificial Intelligent Agents) that performs the gov tasks.</p>
         <div className={styles.contextGrid}>
           {[
             {n:'01',h:'Reusable components save cost',p:'Nearly every department needs the same 4 building blocks - forms, payments, case tracking, and notifications. Build once, deploy everywhere across all ministries.'},
