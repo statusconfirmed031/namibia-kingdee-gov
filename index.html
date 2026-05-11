@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdee × Namibia — Government Services Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #111;
+  --mid: #555;
+  --light: #999;
+  --border: #e4e4e4;
+  --bg: #ffffff;
+  --bg2: #f9f9f9;
+  --red: #b83222;
+  --teal-bg: #eef7f4; --teal-fg: #1a6b5a;
+  --purple-bg: #f0eef9; --purple-fg: #4a3a8c;
+  --amber-bg: #fdf3e3; --amber-fg: #7a4f0a;
+  --coral-bg: #fdf0ed; --coral-fg: #9e3520;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14.5px; line-height: 1.65;
+  color: var(--black); background: var(--bg);
+}
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 50px;
+}
+.logo { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500; letter-spacing: .06em; }
+.logo span { color: var(--red); }
+nav { display: flex; gap: 1.75rem; }
+nav a { font-size: 12.5px; color: var(--light); text-decoration: none; transition: color .15s; }
+nav a:hover { color: var(--black); }
+
+/* HERO */
+.hero { padding: 5rem 2.5rem 4rem; border-bottom: 1px solid var(--border); }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.25rem;
+}
+h1 {
+  font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 300;
+  line-height: 1.2; letter-spacing: -.02em;
+  margin-bottom: 1.25rem; max-width: 700px;
+}
+h1 strong { font-weight: 500; }
+.hero-desc {
+  font-size: .95rem; font-weight: 300; color: var(--mid);
+  max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem;
+}
+.stats { display: flex; border: 1px solid var(--border); width: fit-content; }
+.stat { padding: .9rem 1.75rem; border-right: 1px solid var(--border); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'IBM Plex Mono', monospace; font-size: 1.5rem; font-weight: 500; line-height: 1; margin-bottom: .2rem; }
+.stat-l { font-size: .75rem; color: var(--light); text-transform: uppercase; letter-spacing: .07em; }
+
+/* SECTIONS */
+.section { padding: 4rem 2.5rem; border-bottom: 1px solid var(--border); }
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--light); margin-bottom: 2rem;
+}
+h2 { font-size: 1.5rem; font-weight: 400; letter-spacing: -.01em; margin-bottom: .6rem; }
+.section-desc { font-size: .9rem; font-weight: 300; color: var(--mid); max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
+
+/* CONTEXT GRID */
+.context-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+}
+.context-item { background: var(--bg); padding: 1.5rem; }
+.context-num { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; color: var(--red); margin-bottom: .5rem; }
+.context-item h3 { font-size: .85rem; font-weight: 500; margin-bottom: .4rem; }
+.context-item p { font-size: .84rem; color: var(--mid); font-weight: 300; line-height: 1.65; }
+
+/* LEGEND */
+.legend { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.badge { font-size: 11px; padding: 3px 10px; border-radius: 2px; }
+.b-coral   { background: var(--coral-bg);  color: var(--coral-fg); }
+.b-purple  { background: var(--purple-bg); color: var(--purple-fg); }
+.b-teal    { background: var(--teal-bg);   color: var(--teal-fg); }
+.b-amber   { background: var(--amber-bg);  color: var(--amber-fg); }
+
+/* DEPARTMENT TABLE */
+.table-wrap { border: 1px solid var(--border); overflow: hidden; }
+.table-head {
+  display: grid; grid-template-columns: 185px 1fr 1.5fr 170px;
+  background: var(--bg2); padding: .6rem 1rem;
+  border-bottom: 1px solid var(--border); gap: 1rem;
+}
+.table-head span { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--light); }
+.dept-row {
+  display: grid; grid-template-columns: 185px 1fr 1.5fr 170px;
+  gap: 1rem; padding: 1.1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start; transition: background .12s;
+}
+.dept-row:last-child { border-bottom: none; }
+.dept-row:hover { background: var(--bg2); }
+.dept-code { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--red); margin-bottom: .3rem; letter-spacing: .04em; }
+.dept-name { font-size: .83rem; font-weight: 500; line-height: 1.35; }
+ul.items { list-style: none; padding: 0; margin: 0; font-size: .82rem; color: var(--mid); font-weight: 300; }
+ul.items li { padding: .18rem 0; display: flex; gap: .45rem; align-items: flex-start; line-height: 1.45; }
+ul.items li::before { content: '–'; color: var(--border); flex-shrink: 0; font-size: .85rem; }
+ul.items.build li::before { content: '→'; color: var(--red); opacity: .45; }
+.tags { display: flex; flex-direction: column; gap: .3rem; padding-top: 2px; }
+.tag { font-size: 10.5px; padding: 2px 8px; border-radius: 2px; width: fit-content; }
+.t-coral   { background: var(--coral-bg);  color: var(--coral-fg); }
+.t-purple  { background: var(--purple-bg); color: var(--purple-fg); }
+.t-teal    { background: var(--teal-bg);   color: var(--teal-fg); }
+.t-amber   { background: var(--amber-bg);  color: var(--amber-fg); }
+
+/* FOUNDATION */
+.foundation {
+  margin-top: 1.5rem; border: 1px solid var(--border);
+  border-left: 3px solid var(--red); padding: 1.25rem 1.5rem; background: var(--bg2);
+}
+.foundation h4 { font-size: .85rem; font-weight: 500; margin-bottom: .4rem; }
+.foundation p { font-size: .84rem; color: var(--mid); font-weight: 300; line-height: 1.65; max-width: 700px; }
+
+/* PRIORITIES */
+.priority-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+}
+.p-card { background: var(--bg); padding: 1.5rem; }
+.p-tier { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--light); margin-bottom: .75rem; }
+.p1 .p-tier { color: var(--red); }
+.p2 .p-tier { color: var(--amber-fg); }
+.p3 .p-tier { color: var(--teal-fg); }
+.p-card h3 { font-size: .88rem; font-weight: 500; margin-bottom: .4rem; line-height: 1.3; }
+.p-card p { font-size: .82rem; color: var(--mid); font-weight: 300; line-height: 1.65; margin-bottom: .9rem; }
+.p-reason { font-size: .79rem; font-weight: 300; color: var(--mid); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6; }
+.p-reason strong { display: block; font-weight: 500; color: var(--black); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .25rem; }
+
+/* FOOTER */
+footer {
+  padding: 2rem 2.5rem; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .06em; }
+.footer-logo span { color: var(--red); }
+footer p { font-size: .78rem; color: var(--light); }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  header, .hero, .section, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .table-head { display: none; }
+  .dept-row { grid-template-columns: 1fr; }
+  .priority-grid, .context-grid { grid-template-columns: 1fr; }
+  .stats { flex-wrap: wrap; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Kingdee<span> × </span>Namibia</div>
+  <nav>
+    <a href="#context">Context</a>
+    <a href="#departments">Departments</a>
+    <a href="#priorities">Priorities</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Government Digital Services — Roadmap</div>
+  <h1>What Namibia needs<br><strong>Kingdee to build</strong></h1>
+  <p class="hero-desc">A department-by-department breakdown of citizen-facing government tasks — translated into plain development requirements and commercial priorities for Kingdee R&amp;D and commercial teams.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">11</div><div class="stat-l">Departments</div></div>
+    <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Citizen tasks</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Module types</div></div>
+    <div class="stat"><div class="stat-n">2.5M</div><div class="stat-l">Namibians</div></div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<div class="section" id="context">
+  <div class="section-label">Context</div>
+  <h2>Why Kingdee, and why now</h2>
+  <p class="section-desc">Namibia's "Digital First Services for All" roadmap (2024–2026) calls for digitising its top public services. Kingdee is positioned to deliver the ERP backbone.</p>
+  <div class="context-grid">
+    <div class="context-item">
+      <div class="context-num">01</div>
+      <h3>Reusable components save cost</h3>
+      <p>Nearly every department needs the same 4 building blocks — forms, payments, case tracking, and notifications. Build once, deploy everywhere across all ministries.</p>
+    </div>
+    <div class="context-item">
+      <div class="context-num">02</div>
+      <h3>Namibia localisation is required from day one</h3>
+      <p>Namibia Dollar (NAD), local bank integrations, NamRA tax rules, and a national ID authentication layer must all be built in — not added later.</p>
+    </div>
+    <div class="context-item">
+      <div class="context-num">03</div>
+      <h3>Citizens are still waiting in physical queues</h3>
+      <p>Home Affairs, NamRA, and Road Authority have the highest daily foot traffic and the most obvious pain. These are the fastest commercial wins for Kingdee.</p>
+    </div>
+    <div class="context-item">
+      <div class="context-num">04</div>
+      <h3>One login must work across all services</h3>
+      <p>A shared national ID identity layer is the backbone. Without it, each ministry builds its own silo and citizens re-register on every single portal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DEPARTMENTS -->
+<div class="section" id="departments">
+  <div class="section-label">Department breakdown</div>
+  <h2>Every department. Every citizen task.</h2>
+  <p class="section-desc">What citizens need to do — and exactly what Kingdee needs to build or customise to make it happen.</p>
+
+  <div class="legend">
+    <span class="badge b-coral">Citizen Portal / CRM</span>
+    <span class="badge b-purple">Finance &amp; Payments</span>
+    <span class="badge b-teal">HR &amp; Workforce</span>
+    <span class="badge b-amber">Procurement &amp; Assets</span>
+  </div>
+
+  <div class="table-wrap">
+    <div class="table-head">
+      <span>Department</span>
+      <span>Citizen needs</span>
+      <span>Kingdee builds</span>
+      <span>Module type</span>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">01 / HOME AFFAIRS</div><div class="dept-name">Civil Registration &amp; Immigration</div></div>
+      <ul class="items">
+        <li>Apply for birth, death &amp; marriage certificates</li>
+        <li>Apply / renew national ID &amp; passport</li>
+        <li>Track application status online</li>
+      </ul>
+      <ul class="items build">
+        <li>Online application form with document upload</li>
+        <li>Citizen-facing case tracking dashboard</li>
+        <li>Fee payment gateway linked to treasury</li>
+        <li>SMS / email notification engine</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-purple">Finance &amp; Payments</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">02 / NAMRA</div><div class="dept-name">Finance &amp; Revenue Authority</div></div>
+      <ul class="items">
+        <li>File personal &amp; business income tax returns</li>
+        <li>Pay VAT and other taxes</li>
+        <li>Apply for tax clearance certificate</li>
+        <li>Check outstanding balances</li>
+      </ul>
+      <ul class="items build">
+        <li>e-Tax filing module (individual &amp; corporate)</li>
+        <li>Namibia-specific tax calculation engine</li>
+        <li>Online payment with local bank integration</li>
+        <li>Digital tax clearance with QR verification</li>
+        <li>Compliance audit trail for officials</li>
+      </ul>
+      <div class="tags"><span class="tag t-purple">Finance &amp; Payments</span><span class="tag t-amber">Procurement &amp; Assets</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">03 / HEALTH</div><div class="dept-name">Health &amp; Social Services</div></div>
+      <ul class="items">
+        <li>Book clinic / hospital appointments</li>
+        <li>Access personal health records</li>
+        <li>Apply for disability or social grants</li>
+        <li>Request medical reports &amp; letters</li>
+      </ul>
+      <ul class="items build">
+        <li>Appointment scheduling linked to facility slots</li>
+        <li>Secure patient record access portal</li>
+        <li>Social grant application &amp; approval workflow</li>
+        <li>Grant payment disbursement tracking</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-purple">Finance &amp; Payments</span><span class="tag t-teal">HR &amp; Workforce</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">04 / EDUCATION</div><div class="dept-name">Education, Arts &amp; Culture</div></div>
+      <ul class="items">
+        <li>Enrol children in schools</li>
+        <li>Apply for bursaries &amp; scholarships</li>
+        <li>Check exam results</li>
+        <li>Apply for university admission</li>
+      </ul>
+      <ul class="items build">
+        <li>School enrolment portal with placement workflow</li>
+        <li>Bursary / scholarship application &amp; scoring</li>
+        <li>Secure exam result publication portal</li>
+        <li>School fee payment module</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-purple">Finance &amp; Payments</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">05 / AGRICULTURE</div><div class="dept-name">Agriculture, Water &amp; Land Reform</div></div>
+      <ul class="items">
+        <li>Apply for communal / resettlement land</li>
+        <li>Register a farm or plot</li>
+        <li>Apply for water connection</li>
+        <li>Request agricultural subsidies &amp; inputs</li>
+      </ul>
+      <ul class="items build">
+        <li>Land application &amp; allocation workflow</li>
+        <li>Digital land registry with plot history</li>
+        <li>Water connection request &amp; billing</li>
+        <li>Subsidy application, approval &amp; disbursement</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-amber">Procurement &amp; Assets</span><span class="tag t-purple">Finance &amp; Payments</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">06 / LABOUR</div><div class="dept-name">Labour &amp; Employment Relations</div></div>
+      <ul class="items">
+        <li>Register a business or employer</li>
+        <li>Apply for work permits (foreign nationals)</li>
+        <li>File labour dispute complaints</li>
+        <li>Register for unemployment benefits</li>
+      </ul>
+      <ul class="items build">
+        <li>Business registration intake &amp; approval workflow</li>
+        <li>Work permit application tracking system</li>
+        <li>Labour dispute case management module</li>
+        <li>Unemployment benefit eligibility &amp; payment</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-teal">HR &amp; Workforce</span><span class="tag t-purple">Finance &amp; Payments</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">07 / TRADE</div><div class="dept-name">Trade &amp; Industrialisation</div></div>
+      <ul class="items">
+        <li>Apply for business / trading licences</li>
+        <li>Register a company</li>
+        <li>Renew licences annually</li>
+        <li>Apply for import / export permits</li>
+      </ul>
+      <ul class="items build">
+        <li>Online licence application &amp; renewal portal</li>
+        <li>Company registration database with search</li>
+        <li>Automated renewal reminders &amp; fee collection</li>
+        <li>Digital permit &amp; certificate generation</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-purple">Finance &amp; Payments</span><span class="tag t-amber">Procurement &amp; Assets</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">08 / TRANSPORT</div><div class="dept-name">Works &amp; Transport — Road Authority</div></div>
+      <ul class="items">
+        <li>Register / renew vehicle licence</li>
+        <li>Apply for a driver's licence</li>
+        <li>Pay traffic fines</li>
+        <li>Book driving tests</li>
+      </ul>
+      <ul class="items build">
+        <li>Vehicle registration &amp; renewal system</li>
+        <li>Driving test booking &amp; slot management</li>
+        <li>Traffic fine payment portal with bank integration</li>
+        <li>Licence card issuance tracking</li>
+      </ul>
+      <div class="tags"><span class="tag t-purple">Finance &amp; Payments</span><span class="tag t-coral">Citizen Portal</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">09 / MUNICIPALITIES</div><div class="dept-name">Urban &amp; Rural Development</div></div>
+      <ul class="items">
+        <li>Apply for a residential plot or stand</li>
+        <li>Submit building plans for approval</li>
+        <li>Pay municipal rates &amp; utility bills</li>
+        <li>Lodge service delivery complaints</li>
+      </ul>
+      <ul class="items build">
+        <li>Plot application &amp; allocation workflow</li>
+        <li>Building plan submission &amp; approval portal</li>
+        <li>Rates &amp; utilities billing + online payment</li>
+        <li>Citizen complaint &amp; feedback management</li>
+      </ul>
+      <div class="tags"><span class="tag t-purple">Finance &amp; Payments</span><span class="tag t-coral">Citizen Portal</span><span class="tag t-amber">Procurement &amp; Assets</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">10 / ENVIRONMENT</div><div class="dept-name">Environment, Forestry &amp; Tourism</div></div>
+      <ul class="items">
+        <li>Apply for wildlife / conservancy permits</li>
+        <li>Register hunting or tour operators</li>
+        <li>Pay national park entrance fees</li>
+      </ul>
+      <ul class="items build">
+        <li>Environmental permit application &amp; tracking</li>
+        <li>Operator / conservancy registration module</li>
+        <li>Park fee payment &amp; e-permit issuance</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-purple">Finance &amp; Payments</span></div>
+    </div>
+
+    <div class="dept-row">
+      <div><div class="dept-code">11 / WELFARE</div><div class="dept-name">Gender Equality &amp; Child Welfare</div></div>
+      <ul class="items">
+        <li>Apply for child maintenance</li>
+        <li>Report GBV cases — confidentially</li>
+        <li>Apply for foster care or adoption</li>
+      </ul>
+      <ul class="items build">
+        <li>Sensitive case intake &amp; management portal</li>
+        <li>Child welfare application &amp; approval workflow</li>
+        <li>Social worker caseload management system</li>
+        <li>Confidential reporting with case number tracking</li>
+      </ul>
+      <div class="tags"><span class="tag t-coral">Citizen Portal</span><span class="tag t-teal">HR &amp; Workforce</span></div>
+    </div>
+
+  </div>
+
+  <div class="foundation">
+    <h4>Cross-cutting foundation — must be built first</h4>
+    <p>Kingdee must build a shared <strong>Namibia Government Identity Layer</strong> — a single login using the national ID number so a citizen authenticates once and accesses all portals without re-registering. Without this backbone, every ministry becomes a silo. This is the first thing R&amp;D should spec out.</p>
+  </div>
+</div>
+
+<!-- PRIORITIES -->
+<div class="section" id="priorities">
+  <div class="section-label">Commercial strategy</div>
+  <h2>Where to start</h2>
+  <p class="section-desc">Not all departments have equal urgency. These six have the clearest path to a signed contract and visible public impact.</p>
+  <div class="priority-grid">
+    <div class="p-card p1">
+      <div class="p-tier">Priority 1 — Pitch first</div>
+      <h3>NamRA — Tax &amp; Revenue</h3>
+      <p>Every employed Namibian and every registered business files taxes. Currently mostly paper-based. A working e-Tax module is an immediate, measurable win for government revenue collection.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Finance module already handles VAT and complex tax rules. Namibia localisation is configuration, not a rebuild.</div>
+    </div>
+    <div class="p-card p1">
+      <div class="p-tier">Priority 1 — Pitch first</div>
+      <h3>Home Affairs — IDs &amp; Passports</h3>
+      <p>The most complained-about government service in Namibia. Long queues, lost paperwork, zero status visibility. This also anchors the national identity layer everything else plugs into.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Workflow and case management tools are the exact fit. Solving this builds the identity backbone for all other services.</div>
+    </div>
+    <div class="p-card p2">
+      <div class="p-tier">Priority 2 — Second wave</div>
+      <h3>Road Authority — Licences &amp; Fines</h3>
+      <p>High transaction volume daily. Vehicle renewals, driving tests, and fines are simple and repetitive — ideal for a self-service portal. Fast to deploy, visible public impact.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Simple payment + scheduling workflow. Builds public trust for the wider government rollout.</div>
+    </div>
+    <div class="p-card p2">
+      <div class="p-tier">Priority 2 — Second wave</div>
+      <h3>Municipalities — Rates &amp; Utilities</h3>
+      <p>Every household in Windhoek and Walvis Bay pays rates and utilities. Moving this online removes the biggest reason citizens visit a municipal office.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Billing modules are production-ready. Localise for NAD, integrate local banks, go live.</div>
+    </div>
+    <div class="p-card p3">
+      <div class="p-tier">Priority 3 — Longer play</div>
+      <h3>Education — Enrolment &amp; Bursaries</h3>
+      <p>School enrolment affects every family. Bursary applications are high-stakes and currently opaque. Digitising both improves equity and reduces corruption risk.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Once the citizen portal foundation is in from Phase 1, education is configuration on top — not a net-new build.</div>
+    </div>
+    <div class="p-card p3">
+      <div class="p-tier">Priority 3 — Longer play</div>
+      <h3>Agriculture — Land &amp; Subsidies</h3>
+      <p>Land reform is politically sensitive but digitally overdue. A transparent allocation workflow reduces disputes — a good-governance story for donor-funded projects.</p>
+      <div class="p-reason"><strong>Why Kingdee wins here</strong>Asset management and procurement modules underpin land registry. Position as a transparency tool.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Kingdee<span> × </span>Namibia</div>
+  <p>Government Digital Services Roadmap · For Kingdee R&amp;D and Commercial Teams · May 2026</p>
+</footer>
+
+</body>
+</html>
